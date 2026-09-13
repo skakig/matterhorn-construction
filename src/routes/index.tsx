@@ -84,7 +84,7 @@ function Home() {
               World’s deepest springs. Fourth-generation builders.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Pagosa Peak at 12,658 feet. The Mother Spring a thousand feet down.
+              Pagosa Peak at 12,658 feet. The Mother Spring more than 1,002 feet deep, its full depth still unknown.
               Owner Jody Ellis brings 40+ years of professional construction experience.
               We live here — then we build houses that belong on these slopes.
             </p>
