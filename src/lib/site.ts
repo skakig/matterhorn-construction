@@ -100,7 +100,7 @@ export const services = [
 export type FilmShot = {
   id: string;
   src: string;
-  video: string;
+  video?: string;
   title: string;
   caption: string;
   slug: string;
@@ -142,7 +142,6 @@ export const films: FilmShot[] = [
   {
     id: "rear",
     src: "/images/lodge-rear.jpg",
-    video: "/videos/lodge-rear.mp4",
     title: "The finish",
     caption: "Landscaped ranch",
     slug: "six-pines-ranch",
@@ -226,7 +225,7 @@ export const projects: Project[] = [
     type: "Timber ranch",
     size: "Custom",
     image: "/images/lodge-rear.jpg",
-    video: "/videos/lodge-rear.mp4",
+    video: "/videos/lodge-stream.mp4",
     gallery: films.filter((f) => f.id !== "approach"),
     excerpt:
       "Six Pines Ranch — a heavy-timber house under Pagosa Peak, finished with a built stream, antler work, stone, and a lawn the dog owns.",

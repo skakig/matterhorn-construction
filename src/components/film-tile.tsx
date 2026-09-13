@@ -59,7 +59,7 @@ export function FilmTile({
         alt=""
         className="absolute inset-0 size-full object-cover"
       />
-      {reduced ? null : (
+      {reduced || !shot.video ? null : (
         <video
           ref={videoRef}
           className="absolute inset-0 size-full object-cover"
@@ -74,9 +74,11 @@ export function FilmTile({
         </video>
       )}
       <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/10 to-transparent" />
-      <span className="play-badge absolute top-4 left-4 flex size-12 items-center justify-center rounded-full border border-line bg-bg/45 text-fg backdrop-blur-md transition-transform duration-150 group-hover:scale-105 group-active:scale-[0.96] md:top-5 md:left-5">
-        <Play className="size-4 fill-current translate-x-px" />
-      </span>
+      {shot.video ? (
+        <span className="play-badge absolute top-4 left-4 flex size-12 items-center justify-center rounded-full border border-line bg-bg/45 text-fg backdrop-blur-md transition-transform duration-150 group-hover:scale-105 group-active:scale-[0.96] md:top-5 md:left-5">
+          <Play className="size-4 fill-current translate-x-px" />
+        </span>
+      ) : null}
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 md:p-6">
         <div>
           <p className="eyebrow">{shot.caption}</p>

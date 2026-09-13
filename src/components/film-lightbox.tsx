@@ -104,18 +104,27 @@ function FilmLightbox() {
       aria-modal
       aria-label={shot.title}
     >
-      <video
-        key={shot.id}
-        ref={videoRef}
-        className="absolute inset-0 size-full object-cover outline-none"
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster={shot.src}
-      >
-        <source src={shot.video} type="video/mp4" />
-      </video>
+      {shot.video ? (
+        <video
+          key={shot.id}
+          ref={videoRef}
+          className="absolute inset-0 size-full object-cover outline-none"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={shot.src}
+        >
+          <source src={shot.video} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          key={shot.id}
+          src={shot.src}
+          alt=""
+          className="absolute inset-0 size-full object-cover"
+        />
+      )}
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg via-transparent to-bg/40" />
 
       <div className="relative z-10 flex items-start justify-between px-5 pt-5 md:px-8 md:pt-6">

@@ -7,13 +7,13 @@ import { films, site } from "@/lib/site";
 export const Route = createFileRoute("/contact")({ component: ContactPage });
 
 function ContactPage() {
-  const rear = films.find((f) => f.id === "rear")!;
+  const stream = films.find((f) => f.id === "stream")!;
 
   return (
     <SiteShell>
       <section className="grid min-h-dvh bg-bg lg:grid-cols-2">
         <FilmTile
-          shot={rear}
+          shot={stream}
           playlist={films}
           className="min-h-[42vh] aspect-auto lg:min-h-dvh"
         />
