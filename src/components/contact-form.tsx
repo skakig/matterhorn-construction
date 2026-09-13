@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
-import { projectTypes, site } from "@/lib/site";
+import { projectTypes, site, startTimelines } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const field =
@@ -17,8 +17,8 @@ export function ContactForm() {
       string,
       string
     >;
-    if (!data.name || !data.email || !data.message) {
-      toast.error("Name, email, and a short note are required.");
+    if (!data.name || !data.email || !data.phone || !data.message) {
+      toast.error("Name, phone, email, and a short note are required.");
       return;
     }
 
@@ -37,7 +37,7 @@ export function ContactForm() {
       email: data.email,
       phone: data.phone || "",
       type: data.type || "",
-      lot: data.lot || "",
+      timeline: data.timeline || "",
       message: data.message,
       _subject: `Matterhorn brief — ${data.name}`,
       _template: "table",
@@ -72,7 +72,7 @@ export function ContactForm() {
       `Email: ${data.email}`,
       `Phone: ${data.phone || "—"}`,
       `Type: ${data.type || "—"}`,
-      `Lot: ${data.lot || "—"}`,
+      `Timeline: ${data.timeline || "—"}`,
       "",
       data.message,
     ];
@@ -98,7 +98,14 @@ export function ContactForm() {
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2 text-[0.7rem] font-medium tracking-[0.16em] text-muted uppercase">
           Phone
-          <input name="phone" type="tel" autoComplete="tel" className={field} />
+          <input
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            className={field}
+            placeholder="We’ll call this number"
+          />
         </label>
         <label className="grid gap-2 text-[0.7rem] font-medium tracking-[0.16em] text-muted uppercase">
           Project type
@@ -112,12 +119,17 @@ export function ContactForm() {
         </label>
       </div>
       <label className="grid gap-2 text-[0.7rem] font-medium tracking-[0.16em] text-muted uppercase">
-        Lot
-        <select name="lot" className={cn(field, "appearance-none")} defaultValue="Have a lot">
-          <option>Have a lot</option>
-          <option>Looking for land</option>
-          <option>Existing home</option>
-          <option>Not sure</option>
+        When do you want to start
+        <select
+          name="timeline"
+          className={cn(field, "appearance-none")}
+          defaultValue="This season"
+        >
+          {startTimelines.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
         </select>
       </label>
       <label className="grid gap-2 text-[0.7rem] font-medium tracking-[0.16em] text-muted uppercase">
@@ -127,7 +139,7 @@ export function ContactForm() {
           required
           rows={5}
           className="w-full resize-y border border-border bg-elevated px-4 py-3 text-sm text-fg outline-none transition-[border-color,box-shadow] duration-200 placeholder:text-faint focus:border-sage focus:shadow-[0_0_0_3px_color-mix(in_oklab,var(--color-sage)_28%,transparent)]"
-          placeholder="Lot, timeline, the view you want from the kitchen…"
+          placeholder="What you’re building, and the view you want from the kitchen…"
         />
       </label>
       <button

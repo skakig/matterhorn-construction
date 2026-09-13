@@ -23,8 +23,26 @@ function AboutPage() {
       </section>
 
       <section className="border-b border-line bg-bg px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
-          <p className="eyebrow md:col-span-3">Why Pagosa</p>
+        <div className="mx-auto grid max-w-7xl items-start gap-12 md:grid-cols-12 md:gap-16">
+          <div className="md:col-span-4">
+            <p className="eyebrow">Why Pagosa</p>
+            <div className="mt-8 border border-line bg-surface p-6 md:p-8">
+              <img
+                src="/brand/mark.png"
+                alt="Matterhorn Construction"
+                className="size-28 object-contain outline-none md:size-36"
+              />
+              <p className="mt-6 font-display text-4xl tracking-[0.14em] text-fg md:text-5xl">
+                MATTERHORN
+              </p>
+              <p className="mt-2 text-[0.7rem] font-medium tracking-[0.28em] text-muted uppercase">
+                Construction, LLC
+              </p>
+              <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
+                Pagosa Springs · San Juan Mountains
+              </p>
+            </div>
+          </div>
           <div className="md:col-span-8">
             <p className="text-xl leading-relaxed text-fg md:text-2xl">
               Matterhorn Construction, LLC builds and renovates homes in Pagosa

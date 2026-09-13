@@ -26,7 +26,7 @@ function ContactPage() {
           </h1>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
             A new home, a remodel, a piece of mountain that needs a plan.
-            Access, timeline, the view you want from the kitchen.
+            Leave a number and when you want to break ground. We’ll call.
           </p>
           <p className="mt-3 text-sm text-fg">{site.legal}</p>
           <a

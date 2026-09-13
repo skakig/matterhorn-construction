@@ -259,3 +259,11 @@ export const projectTypes = [
   "Site work",
   "Other",
 ] as const;
+
+export const startTimelines = [
+  "This season",
+  "Spring",
+  "Next year",
+  "18 months or more",
+  "Just exploring",
+] as const;
