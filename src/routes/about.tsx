@@ -67,10 +67,12 @@ function AboutPage() {
               he carries that family craft into every project.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              The mark is the mountain and the tools that work it. The Matterhorn
-              above Zermatt — a wooden mallet and a chisel, crossed underneath.
-              Built for the high country, in the town that holds the Mother
-              Spring.
+              Building your home means making decisions you’ll live with for
+              decades: where to build, what to invest in, and how each detail
+              will hold up over time. Jody brings more than 40 years of
+              construction experience to those conversations. Bring him your
+              plans, your questions, and your budget, and talk through what it
+              will take to turn the home you imagine into a place you can live.
             </p>
           </div>
         </div>
