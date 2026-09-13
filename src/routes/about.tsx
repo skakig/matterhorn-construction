@@ -22,11 +22,22 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="border-b border-line bg-bg px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto grid max-w-7xl items-start gap-12 md:grid-cols-12 md:gap-16">
+      <section className="relative isolate overflow-hidden border-b border-line">
+        <img
+          src="/images/blueprint-site.jpg"
+          alt=""
+          className="absolute inset-0 size-full object-cover opacity-55"
+        />
+        <div className="blueprint-grid absolute inset-0" aria-hidden />
+        <div
+          className="absolute inset-0 bg-linear-to-r from-bg/80 via-bg/55 to-bg/70"
+          aria-hidden
+        />
+        <div className="blueprint-marks absolute inset-0" aria-hidden />
+        <div className="relative mx-auto grid max-w-7xl items-start gap-12 px-5 py-20 md:grid-cols-12 md:gap-16 md:px-8 md:py-28">
           <div className="md:col-span-4">
-            <p className="eyebrow">Why Pagosa</p>
-            <div className="mt-8 border border-line bg-surface p-6 md:p-8">
+            <p className="eyebrow">Sheet A-201 · Why Pagosa</p>
+            <div className="mt-8 border border-line bg-bg/70 p-6 backdrop-blur-sm md:p-8">
               <img
                 src="/brand/mark.png"
                 alt="Matterhorn Construction"
@@ -39,26 +50,27 @@ function AboutPage() {
                 Construction, LLC
               </p>
               <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
-                Pagosa Springs · San Juan Mountains
+                Fourth generation · Pagosa Springs
               </p>
             </div>
           </div>
           <div className="md:col-span-8">
             <p className="text-xl leading-relaxed text-fg md:text-2xl">
-              Matterhorn Construction, LLC builds and renovates homes in Pagosa
-              Springs and the San Juan Mountains. We came here for the river, the
-              peaks, and a town small enough to know the inspector by name.
+              Pagosa Springs. The world’s deepest hot spring. Pagosa Peak at
+              12,658 feet. This is where a fourth-generation master builder puts
+              a house on a mountain lot.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              The work is unglamorous in the right places: footings that survive
-              freeze-thaw, roofs that shed Wolf Creek snow, flashing that does not
-              leak in a March wind. The rest — timber, stone, glass — is what the
-              photographs are for.
+              Matterhorn Construction, LLC is a hundred years of craft in the
+              blood — timber, stone, steel, and glass, from the first walk of the
+              lot to the day you take the keys. We know the inspector by name
+              because we live here.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
               The mark is the mountain and the tools that work it. The Matterhorn
               above Zermatt — a wooden mallet and a chisel, crossed underneath.
-              Simple, because mountain building is already complicated.
+              Built for the high country, in the town that holds the Mother
+              Spring.
             </p>
           </div>
         </div>

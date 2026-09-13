@@ -80,13 +80,13 @@ function Home() {
             <p className="eyebrow">
               {site.peak} · {site.coordinates}
             </p>
-            <h2 className="display-hero mt-4 max-w-[12ch] text-[clamp(3rem,8vw,6rem)] text-fg">
-              Built where the river meets the peaks.
+            <h2 className="display-hero mt-4 max-w-[14ch] text-[clamp(3rem,8vw,6rem)] text-fg">
+              World’s deepest springs. Fourth-generation builders.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Pagosa Peak at 12,658 feet. Ponderosa, frost, and a winter that does
-              not bluff. We live here — then build houses that belong on these
-              slopes.
+              Pagosa Peak at 12,658 feet. The Mother Spring a thousand feet down.
+              A hundred years of craft in the family. We live here — then we
+              build houses that belong on these slopes.
             </p>
             <Link
               to="/about"

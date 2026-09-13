@@ -21,9 +21,9 @@ export const nav = [
 
 export const stats = [
   { value: "12,658", unit: "ft", label: "Pagosa Peak" },
-  { value: "7,126", unit: "ft", label: "Town elevation" },
-  { value: "37.44", unit: "°N", label: "The mountain we build under" },
-  { value: "4", unit: "seasons", label: "Year-round timber" },
+  { value: "1,002", unit: "ft", label: "World’s deepest hot spring" },
+  { value: "4th", unit: "generation", label: "Master builder" },
+  { value: "100+", unit: "years", label: "Of craft in the family" },
 ];
 
 export const phases = [
@@ -150,7 +150,7 @@ export const films: FilmShot[] = [
   {
     id: "stream",
     src: "/images/lodge-stream.jpg",
-    video: "/videos/lodge-finish.mp4",
+    video: "/videos/lodge-stream.mp4",
     title: "The stream",
     caption: "Built, not found",
     slug: "six-pines-ranch",
@@ -243,8 +243,8 @@ export const values = [
     copy: "Wind, solar, snow, access, and the view you actually want from the sink. We walk it before we draw it.",
   },
   {
-    title: "Weather is the client",
-    copy: "Pagosa does not care about a mood board. Roofs, flashing, and assemblies come first. Beauty follows.",
+    title: "Weather is the craft",
+    copy: "Wolf Creek snow, freeze-thaw, March wind. Roofs and flashing come first so the timber and glass can last.",
   },
   {
     title: "One crew, one conversation",
