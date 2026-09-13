@@ -22,11 +22,11 @@ function ContactPage() {
             {site.location} · {site.peak}
           </p>
           <h1 className="display-hero mt-4 text-[clamp(3rem,8vw,5.5rem)] text-fg">
-            Tell us about the lot.
+            We help build dreams.
           </h1>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-            New construction, remodel, or a piece of ground that needs a plan.
-            Include access, timeline, and the view you want from the kitchen.
+            A new home, a remodel, a piece of mountain that needs a plan.
+            Access, timeline, the view you want from the kitchen.
           </p>
           <p className="mt-3 text-sm text-fg">{site.legal}</p>
           <a

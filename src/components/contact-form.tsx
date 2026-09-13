@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
-import { projectTypes } from "@/lib/site";
+import { projectTypes, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const field =
@@ -10,24 +10,77 @@ export function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<
+      string,
+      string
+    >;
     if (!data.name || !data.email || !data.message) {
       toast.error("Name, email, and a short note are required.");
       return;
     }
+
     setSubmitting(true);
     const payload = { ...data, at: new Date().toISOString() };
-    const prev = JSON.parse(localStorage.getItem("matterhorn-inquiries") || "[]") as unknown[];
-    localStorage.setItem("matterhorn-inquiries", JSON.stringify([payload, ...prev].slice(0, 20)));
-    window.setTimeout(() => {
-      setSubmitting(false);
+    const prev = JSON.parse(
+      localStorage.getItem("matterhorn-inquiries") || "[]",
+    ) as unknown[];
+    localStorage.setItem(
+      "matterhorn-inquiries",
+      JSON.stringify([payload, ...prev].slice(0, 20)),
+    );
+
+    const body = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || "",
+      type: data.type || "",
+      lot: data.lot || "",
+      message: data.message,
+      _subject: `Matterhorn brief — ${data.name}`,
+      _template: "table",
+      _captcha: "false",
+    };
+
+    let sent = false;
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      sent = res.ok;
+    } catch {
+      sent = false;
+    }
+
+    setSubmitting(false);
+    if (sent) {
       setDone(true);
       form.reset();
       toast.success("Received. We’ll be in touch from Pagosa.");
-    }, 600);
+      return;
+    }
+
+    const lines = [
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone || "—"}`,
+      `Type: ${data.type || "—"}`,
+      `Lot: ${data.lot || "—"}`,
+      "",
+      data.message,
+    ];
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
+      `Matterhorn brief — ${data.name}`,
+    )}&body=${encodeURIComponent(lines.join("\n"))}`;
+    setDone(true);
+    toast.message("Opening email so the brief still goes out.");
   }
 
   return (
@@ -84,6 +137,10 @@ export function ContactForm() {
       >
         {submitting ? "Sending…" : done ? "Sent — start another" : "Send the brief"}
       </button>
+      <p className="text-[0.7rem] leading-relaxed text-faint">
+        Briefs go to {site.email}. First send asks that inbox to confirm — one
+        click, then every brief lands.
+      </p>
     </form>
   );
 }

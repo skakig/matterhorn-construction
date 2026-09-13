@@ -106,7 +106,7 @@ function ProjectPage() {
           <div>
             <p className="eyebrow">Start a project</p>
             <p className="mt-2 font-display text-4xl tracking-[0.04em] text-fg md:text-6xl">
-              Tell us about the lot.
+              We help build dreams.
             </p>
           </div>
           <ArrowRight className="mb-1 size-6 text-fg" />

@@ -32,8 +32,9 @@ export const phases = [
     num: "01",
     title: "Foundation",
     kicker: "Groundwork",
-    copy: "Cut, fill, stem walls, and footings engineered for freeze-thaw and mountain drainage. The house starts in the dirt.",
+    copy: "The machine hits the slope first. Cut, fill, stem walls, and footings engineered for freeze-thaw and mountain drainage. The house starts in the dirt.",
     image: "/images/phase-foundation.jpg",
+    video: "/videos/phase-foundation.mp4",
   },
   {
     id: "frame",
@@ -42,6 +43,7 @@ export const phases = [
     kicker: "Structure",
     copy: "Heavy logs, steel, and shear. Timbers go up, the roof plane locks, and a mountain ranch finds its bones.",
     image: "/images/phase-frame.jpg",
+    video: "/videos/phase-frame.mp4",
   },
   {
     id: "envelope",
@@ -50,14 +52,16 @@ export const phases = [
     kicker: "Weather",
     copy: "Standing-seam metal, stone bases, deep gables. Pagosa weather is the client we never argue with.",
     image: "/images/phase-envelope.jpg",
+    video: "/videos/phase-envelope.mp4",
   },
   {
     id: "finish",
     num: "04",
     title: "Finish",
-    kicker: "Landscape",
-    copy: "Landscaping, the built stream, antler work, decks, and the last light on Pagosa Peak. Six Pines Ranch settles into the slope.",
+    kicker: "The ranch",
+    copy: "Lights on. Landscaping, the built stream, antler work, decks. Six Pines Ranch as it stands — the house we actually built.",
     image: "/images/phase-finish.jpg",
+    video: "/videos/lodge-entry.mp4",
   },
 ] as const;
 

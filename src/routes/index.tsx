@@ -20,20 +20,24 @@ function Home() {
       <Hero />
       <StatsMarquee />
 
-      <section className="border-b border-line bg-bg px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-12 md:gap-16">
-          <p className="eyebrow md:col-span-3">The studio</p>
-          <div className="md:col-span-9">
-            <h2 className="display-hero max-w-[18ch] text-[clamp(2.6rem,6vw,4.6rem)] text-fg">
-              A construction company should show how something becomes built.
-            </h2>
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-              Matterhorn Construction, LLC is a Pagosa Springs builder for custom
-              homes, design-build, and mountain remodels. We work the San Juans
-              because we live in them — snow load, steep lots, and the last light
-              on Pagosa Peak.
-            </p>
-          </div>
+      <section className="relative isolate min-h-[88vh] overflow-hidden bg-bg">
+        <CinematicVideo
+          src="/videos/phase-foundation.mp4"
+          poster="/images/phase-foundation.jpg"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-bg via-bg/55 to-bg/20" />
+        <div className="absolute inset-0 bg-linear-to-t from-bg via-transparent to-bg/30" />
+        <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 md:px-8 md:pb-20">
+          <p className="eyebrow">The studio · Groundwork</p>
+          <h2 className="display-hero mt-4 max-w-[16ch] text-[clamp(2.6rem,7vw,5.2rem)] text-fg">
+            A construction company should show how something becomes built.
+          </h2>
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+            Matterhorn Construction, LLC is a Pagosa Springs builder for custom
+            homes, design-build, and mountain remodels. We work the San Juans
+            because we live in them — snow load, steep lots, and the last light
+            on Pagosa Peak.
+          </p>
         </div>
       </section>
 
@@ -128,11 +132,11 @@ function Home() {
         <div className="px-5 py-16 md:px-12 md:py-24">
           <p className="eyebrow">Start a project</p>
           <h2 className="display-hero mt-3 text-[clamp(2.6rem,6vw,4.4rem)] text-fg">
-            Tell us about the lot.
+            We help build dreams.
           </h2>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-            New home, remodel, or a steep piece of ground that needs a plan.
-            We read every brief.
+            A new home, a remodel, a piece of mountain that needs a plan.
+            Tell us what you see.
           </p>
           <div className="mt-10">
             <ContactForm />
