@@ -8,7 +8,8 @@ import { Hero } from "@/components/hero";
 import { LodgeMosaic } from "@/components/lodge-mosaic";
 import { SiteShell } from "@/components/site-shell";
 import { StatsMarquee } from "@/components/stats-marquee";
-import { films, services, site, values } from "@/lib/site";
+import { Capabilities } from "@/components/capabilities";
+import { films, site, values } from "@/lib/site";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -69,27 +70,7 @@ function Home() {
 
       <BuildTimeline />
 
-      <section className="border-y border-line bg-bg px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-7xl">
-          <p className="eyebrow">Capabilities</p>
-          <h2 className="display-hero mt-3 text-[clamp(2.8rem,7vw,5.5rem)] text-fg">
-            What we build
-          </h2>
-          <div className="mt-12 grid gap-px bg-border md:grid-cols-2">
-            {services.map((s) => (
-              <article key={s.num} className="bg-bg p-6 md:p-10">
-                <p className="font-display text-4xl text-sage">{s.num}</p>
-                <h3 className="mt-6 font-display text-4xl tracking-[0.04em] text-fg">
-                  {s.title}
-                </h3>
-                <p className="mt-3 max-w-md text-sm leading-relaxed text-muted md:text-base">
-                  {s.copy}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Capabilities />
 
       <section className="relative isolate overflow-hidden min-h-[70vh]">
         <CinematicVideo src="/videos/pagosa-peak.mp4" poster="/images/pagosa-peak.jpg" />
