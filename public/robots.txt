@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /__grok/
+
+Sitemap: https://matterhorn.construction/sitemap.xml

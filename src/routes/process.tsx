@@ -1,10 +1,11 @@
+import { seo } from "@/lib/seo";
 import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BuildTimeline } from "@/components/build-timeline";
 import { SiteShell } from "@/components/site-shell";
 import { phases } from "@/lib/site";
 
-export const Route = createFileRoute("/process")({ component: ProcessPage });
+export const Route = createFileRoute("/process")({ head: () => seo("/process", "Custom Home Building Process | Pagosa Springs | Matterhorn", "Explore a conceptual mountain-home build from groundwork to completion. Discuss plans, site conditions, and design-build in Pagosa Springs with Matterhorn."), component: ProcessPage });
 
 function PhaseFilm({ src, poster }: { src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null);

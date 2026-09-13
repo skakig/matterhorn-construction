@@ -1,3 +1,4 @@
+import { seo } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { BuildTimeline } from "@/components/build-timeline";
@@ -11,7 +12,7 @@ import { StatsMarquee } from "@/components/stats-marquee";
 import { Capabilities } from "@/components/capabilities";
 import { films, site, values } from "@/lib/site";
 
-export const Route = createFileRoute("/")({ component: Home });
+export const Route = createFileRoute("/")({ head: () => seo("/", "Custom Home Builder in Pagosa Springs, CO | Matterhorn", "Build your mountain home with Matterhorn Construction in Pagosa Springs, CO. Jody Ellis brings 40+ years of professional construction experience."), component: Home });
 
 function Home() {
   const drive = films.find((f) => f.id === "arrival")!;

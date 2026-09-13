@@ -1,10 +1,11 @@
+import { seo } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { ContactForm } from "@/components/contact-form";
 import { FilmTile } from "@/components/film-tile";
 import { SiteShell } from "@/components/site-shell";
 import { films, site } from "@/lib/site";
 
-export const Route = createFileRoute("/contact")({ component: ContactPage });
+export const Route = createFileRoute("/contact")({ head: () => seo("/contact", "Contact a Pagosa Springs Home Builder | Matterhorn", "Discuss your custom home, remodel, or design-build project in Pagosa Springs, CO with Jody Ellis. Call Matterhorn Construction at 970-903-0122."), component: ContactPage });
 
 function ContactPage() {
   const stream = films.find((f) => f.id === "stream")!;

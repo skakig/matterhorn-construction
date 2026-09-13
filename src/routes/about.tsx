@@ -1,10 +1,11 @@
+import { seo } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CinematicVideo } from "@/components/cinematic-video";
 import { FilmTile } from "@/components/film-tile";
 import { SiteShell } from "@/components/site-shell";
 import { films, site, stats, values } from "@/lib/site";
 
-export const Route = createFileRoute("/about")({ component: AboutPage });
+export const Route = createFileRoute("/about")({ head: () => seo("/about", "Jody Ellis | Pagosa Springs Builder | Matterhorn Construction", "Meet Jody Ellis, owner of Matterhorn Construction in Pagosa Springs, CO, with more than 40 years of professional construction experience."), component: AboutPage });
 
 function AboutPage() {
   const lawn = films.find((f) => f.id === "lawn")!;

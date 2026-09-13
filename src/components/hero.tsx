@@ -33,7 +33,7 @@ export function Hero() {
         </h1>
         <div className="reveal reveal-d2 mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <p className="max-w-md text-base leading-relaxed text-muted md:text-lg">
-            Custom timber lodges and mountain construction under Pagosa Peak.
+            Custom homes, timber lodges, and remodeling in Pagosa Springs, Colorado.
             Engineered for 7,000-foot winters — {site.coordinates}.
           </p>
           <div className="cta-glass flex w-full max-w-md flex-col gap-3 p-5 sm:p-6">

@@ -1,3 +1,4 @@
+import { seo } from "@/lib/seo";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Play } from "lucide-react";
 import { CinematicVideo } from "@/components/cinematic-video";
@@ -13,6 +14,11 @@ export const Route = createFileRoute("/work/$slug")({
     if (!project) throw notFound();
     return { project };
   },
+  head: ({ loaderData }) => loaderData ? seo(
+    `/work/${loaderData.project.slug}`,
+    `${loaderData.project.title} | Pagosa Springs Custom Home | Matterhorn`,
+    loaderData.project.excerpt,
+  ) : { meta: [{ name: "robots", content: "noindex" }] },
 });
 
 function ProjectPage() {

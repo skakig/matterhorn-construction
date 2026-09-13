@@ -504,3 +504,14 @@ test("vite plugin bakes og identity as a virtual module", () => {
   assert.match(plugin, /snapshotOgIdentity/);
 });
 
+
+test("preserves route-owned social metadata without generic duplicates", () => {
+  const html = '<html><head><meta name="matterhorn:seo" content="route"/><meta property="og:title" content="Pagosa Springs Builder"/><meta property="og:url" content="https://matterhorn.construction/about"/><meta name="twitter:title" content="Meet Jody Ellis"/></head><body></body></html>';
+  const output = injectGrokPwaHead(html, { appName: "Generic fallback" });
+  assert.match(output, /content="Pagosa Springs Builder"/);
+  assert.match(output, /content="Meet Jody Ellis"/);
+  assert.match(output, /content="https:\/\/matterhorn.construction\/about"/);
+  assert.equal(output.split('property="og:title"').length - 1, 1);
+  assert.equal(output.split('name="twitter:title"').length - 1, 1);
+  assert.match(output, /rel="manifest"/);
+});

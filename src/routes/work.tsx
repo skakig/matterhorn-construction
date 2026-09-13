@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { seo } from "@/lib/seo";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { FilmTile } from "@/components/film-tile";
 import { SiteShell } from "@/components/site-shell";
-import { films, site } from "@/lib/site";
+import { films } from "@/lib/site";
 
-export const Route = createFileRoute("/work")({ component: WorkPage });
+export const Route = createFileRoute("/work")({ head: () => seo("/work", "Six Pines Ranch Portfolio | Pagosa Springs | Matterhorn", "Explore Six Pines Ranch in Pagosa Springs, Colorado: timber construction, stonework, decks, and landscaping by Matterhorn Construction."), component: WorkPage });
 
 const workFilms = films.filter((f) => f.id !== "approach");
 
@@ -17,9 +18,11 @@ function WorkPage() {
             Six Pines Ranch
           </h1>
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted md:text-base">
-            Heavy timber, a built stream, antler work, and a lawn that looks at{" "}
-            {site.peakElevation}. Films from the lot — {site.coordinates}.
+            Explore the timber construction, stonework, decks, and landscaping at Six Pines Ranch in Pagosa Springs, Colorado.
           </p>
+          <Link to="/work/$slug" params={{ slug: "six-pines-ranch" }} className="mt-5 inline-block text-sm text-sage underline underline-offset-4">
+            View the Six Pines Ranch project details
+          </Link>
         </div>
       </section>
       <section className="bg-bg px-4 py-4 md:px-6 md:py-6">
