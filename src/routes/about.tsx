@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { CinematicVideo } from "@/components/cinematic-video";
 import { FilmTile } from "@/components/film-tile";
 import { SiteShell } from "@/components/site-shell";
-import { films, stats, values } from "@/lib/site";
+import { films, site, stats, values } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
@@ -99,17 +99,51 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-bg px-5 py-20 md:px-8 md:py-28">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="display-hero max-w-[14ch] text-[clamp(2.8rem,7vw,5.5rem)] text-fg">
-            Ready when the lot is.
-          </h2>
-          <Link
-            to="/contact"
-            className="mt-8 inline-flex h-12 items-center bg-fg px-6 text-[0.75rem] font-medium tracking-[0.16em] text-bg uppercase"
-          >
-            Start a project
-          </Link>
+      <section className="border-t border-line bg-bg px-5 py-20 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-12 md:gap-16">
+          <div className="md:col-span-4">
+            <div className="border border-line bg-surface p-6 md:p-8">
+              <img
+                src="/brand/mark.png"
+                alt=""
+                className="size-28 object-contain outline-none md:size-40"
+              />
+              <p className="mt-6 font-display text-4xl tracking-[0.14em] text-fg md:text-5xl">
+                MATTERHORN
+              </p>
+              <p className="mt-2 text-[0.7rem] font-medium tracking-[0.28em] text-muted uppercase">
+                Construction, LLC
+              </p>
+              <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
+                {site.location}
+              </p>
+            </div>
+          </div>
+          <div className="md:col-span-8">
+            <p className="eyebrow">The whole arc</p>
+            <h2 className="display-hero mt-4 max-w-[16ch] text-[clamp(2.6rem,6.5vw,5rem)] text-fg">
+              From pre-planning to the keys.
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+              Matterhorn Construction, LLC is here to make the house you see a
+              house you can walk into — first walk of the lot, last turn of the
+              key.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                to="/contact"
+                className="inline-flex h-12 items-center justify-center bg-fg px-6 text-[0.75rem] font-medium tracking-[0.16em] text-bg uppercase"
+              >
+                Start a project
+              </Link>
+              <Link
+                to="/work"
+                className="inline-flex h-12 items-center justify-center border border-line px-6 text-[0.75rem] font-medium tracking-[0.16em] text-fg uppercase transition-colors hover:bg-fg hover:text-bg"
+              >
+                See the work
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </SiteShell>
