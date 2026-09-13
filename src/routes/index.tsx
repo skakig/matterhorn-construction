@@ -85,7 +85,7 @@ function Home() {
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
               Pagosa Peak at 12,658 feet. The Mother Spring a thousand feet down.
-              Owner Jody Ellis brings 40+ years of personal construction experience.
+              Owner Jody Ellis brings 40+ years of professional construction experience.
               We live here — then we build houses that belong on these slopes.
             </p>
             <Link

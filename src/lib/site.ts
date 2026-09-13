@@ -25,7 +25,7 @@ export const stats = [
   { value: "12,658", unit: "ft", label: "Pagosa Peak" },
   { value: "1,002", unit: "ft", label: "World’s deepest hot spring" },
   { value: "4th", unit: "generation", label: "Master builder" },
-  { value: "40+", unit: "years", label: "Jody Ellis’s personal experience" },
+  { value: "40+", unit: "years", label: "Jody Ellis’s professional construction experience" },
 ];
 
 export const phases = [

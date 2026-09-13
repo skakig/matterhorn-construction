@@ -57,7 +57,7 @@ function AboutPage() {
           <div className="md:col-span-8">
             <p className="text-xl leading-relaxed text-fg md:text-2xl">
               Pagosa Springs. The world’s deepest hot spring. Pagosa Peak at
-              12,658 feet. Owner Jody Ellis brings more than 40 years of personal
+              12,658 feet. Owner Jody Ellis brings more than 40 years of professional
               construction experience to every mountain lot.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
