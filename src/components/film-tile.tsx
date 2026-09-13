@@ -32,8 +32,10 @@ export function FilmTile({
     if (!el || !video || reduced) return;
     const io = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) void video.play();
-        else video.pause();
+        if (entry?.isIntersecting) {
+          video.muted = true;
+          void video.play();
+        } else video.pause();
       },
       { threshold: 0.4 },
     );
@@ -57,7 +59,7 @@ export function FilmTile({
       <img
         src={shot.src}
         alt=""
-        className="absolute inset-0 size-full object-cover"
+        className="ken-burns absolute inset-0 size-full object-cover"
       />
       {reduced || !shot.video ? null : (
         <video

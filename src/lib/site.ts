@@ -141,7 +141,8 @@ export const films: FilmShot[] = [
   },
   {
     id: "rear",
-    src: "/images/lodge-rear.jpg",
+    src: "/images/lodge-stream.jpg",
+    video: "/videos/lodge-finish.mp4",
     title: "The finish",
     caption: "Landscaped ranch",
     slug: "six-pines-ranch",
@@ -149,7 +150,7 @@ export const films: FilmShot[] = [
   {
     id: "stream",
     src: "/images/lodge-stream.jpg",
-    video: "/videos/lodge-stream.mp4",
+    video: "/videos/lodge-finish.mp4",
     title: "The stream",
     caption: "Built, not found",
     slug: "six-pines-ranch",
@@ -165,6 +166,7 @@ export const films: FilmShot[] = [
   {
     id: "patio",
     src: "/images/lodge-patio.jpg",
+    video: "/videos/lodge-patio.mp4",
     title: "Under the decks",
     caption: "The hangout",
     slug: "six-pines-ranch",
@@ -196,7 +198,7 @@ export const films: FilmShot[] = [
 ];
 
 export const lodgeShots = films.filter((f) =>
-  ["arrival", "lawn", "rear", "stream"].includes(f.id),
+  ["arrival", "lawn", "rear", "patio"].includes(f.id),
 );
 
 export const approachFilm = films[0]!;

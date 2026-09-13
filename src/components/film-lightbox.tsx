@@ -104,10 +104,22 @@ function FilmLightbox() {
       aria-modal
       aria-label={shot.title}
     >
+      <img
+        src={shot.src}
+        alt=""
+        className="ken-burns absolute inset-0 size-full object-cover"
+      />
       {shot.video ? (
         <video
           key={shot.id}
-          ref={videoRef}
+          ref={(el) => {
+            videoRef.current = el;
+            if (!el) return;
+            el.muted = true;
+            el.defaultMuted = true;
+            el.playsInline = true;
+            void el.play();
+          }}
           className="absolute inset-0 size-full object-cover outline-none"
           autoPlay
           muted
@@ -117,14 +129,7 @@ function FilmLightbox() {
         >
           <source src={shot.video} type="video/mp4" />
         </video>
-      ) : (
-        <img
-          key={shot.id}
-          src={shot.src}
-          alt=""
-          className="absolute inset-0 size-full object-cover"
-        />
-      )}
+      ) : null}
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-bg via-transparent to-bg/40" />
 
       <div className="relative z-10 flex items-start justify-between px-5 pt-5 md:px-8 md:pt-6">

@@ -236,3 +236,24 @@
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 }
+
+.ken-burns {
+  animation: ken-burns 18s ease-in-out infinite alternate;
+  transform-origin: 50% 42%;
+  will-change: transform;
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns {
+    animation: none;
+  }
+}
