@@ -59,7 +59,7 @@ export function Hero() {
           </div>
         </div>
         <a
-          href="#work"
+          href="#process"
           className="reveal reveal-d3 mt-10 inline-flex items-center gap-2 self-start text-[0.7rem] font-medium tracking-[0.2em] text-muted uppercase transition-colors hover:text-fg"
         >
           <ArrowDown className="size-3.5" />

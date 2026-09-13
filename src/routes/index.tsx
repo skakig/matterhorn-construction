@@ -42,6 +42,8 @@ function Home() {
         </div>
       </section>
 
+      <BuildTimeline />
+
       <section id="work" className="bg-bg px-5 py-16 md:px-8 md:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex items-end justify-between gap-6 md:mb-10">
@@ -67,8 +69,6 @@ function Home() {
           </Link>
         </div>
       </section>
-
-      <BuildTimeline />
 
       <Capabilities />
 
