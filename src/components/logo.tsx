@@ -67,12 +67,17 @@ export function Logo({
         className={cn("size-12 shrink-0 object-contain outline-none md:size-14", markClassName)}
       />
       {wordmark ? (
-        <span className="flex flex-col leading-none">
-          <span className="font-display text-[1.45rem] tracking-[0.14em] md:text-[1.6rem]">
+        <span className="grid w-max leading-none">
+          <span className="-mr-[0.14em] font-display text-[1.45rem] tracking-[0.14em] md:text-[1.6rem]">
             MATTERHORN
           </span>
-          <span className="text-[0.62rem] font-medium tracking-[0.28em] text-muted">
-            CONSTRUCTION
+          <span
+            className="flex w-0 min-w-full justify-between text-[0.66rem] font-medium text-muted"
+            aria-label="Construction"
+          >
+            {Array.from("CONSTRUCTION").map((letter, index) => (
+              <span key={index} aria-hidden="true">{letter}</span>
+            ))}
           </span>
         </span>
       ) : null}
