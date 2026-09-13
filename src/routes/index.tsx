@@ -23,8 +23,8 @@ function Home() {
 
       <section className="relative isolate min-h-[88vh] overflow-hidden bg-bg">
         <CinematicVideo
-          src="/videos/phase-foundation.mp4"
-          poster="/images/phase-foundation.jpg"
+          src="/videos/studio.mp4"
+          poster="/images/studio.jpg"
         />
         <div className="absolute inset-0 bg-linear-to-r from-bg via-bg/55 to-bg/20" />
         <div className="absolute inset-0 bg-linear-to-t from-bg via-transparent to-bg/30" />
