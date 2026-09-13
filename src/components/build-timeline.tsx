@@ -5,13 +5,9 @@ import { cn } from "@/lib/utils";
 export function BuildTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const [phaseIndex, setPhaseIndex] = useState(0);
   const [reduced, setReduced] = useState(false);
-
-  const phaseIndex = Math.min(
-    phases.length - 1,
-    Math.floor(progress * phases.length),
-  );
   const phase = phases[phaseIndex] ?? phases[0];
 
   useEffect(() => {
@@ -25,73 +21,49 @@ export function BuildTimeline() {
   useEffect(() => {
     const section = sectionRef.current;
     const video = videoRef.current;
-    if (!section) return;
-
+    if (!section || reduced) return;
     let raf = 0;
     let target = 0;
-    let seeking = false;
+    let nearby = false;
 
+    const seek = () => {
+      if (!video || !nearby || video.seeking || !Number.isFinite(video.duration) || video.duration <= 0) return;
+      const time = Math.min(video.duration - 1 / 24, target * video.duration);
+      if (Math.abs(video.currentTime - time) >= 1 / 30) video.currentTime = Math.max(0, time);
+    };
     const measure = () => {
+      raf = 0;
       const rect = section.getBoundingClientRect();
-      const total = Math.max(section.offsetHeight - window.innerHeight, 1);
-      const scrolled = Math.min(Math.max(-rect.top, 0), total);
-      target = scrolled / total;
+      const total = Math.max(rect.height - window.innerHeight, 1);
+      target = Math.max(0, Math.min(1, -rect.top / total));
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${target})`;
+      setPhaseIndex(Math.min(phases.length - 1, Math.floor(target * phases.length)));
+      seek();
     };
-
-    const onSeeked = () => {
-      seeking = false;
+    const schedule = () => {
+      if (!raf) raf = requestAnimationFrame(measure);
     };
-    const onReady = () => {
-      if (!video) return;
-      video.pause();
-      video.muted = true;
-    };
-
-    video?.addEventListener("seeked", onSeeked);
-    video?.addEventListener("loadedmetadata", onReady);
-
-    const tick = () => {
-      setProgress((prev) => {
-        const next = prev + (target - prev) * 0.28;
-        if (Math.abs(next - prev) < 0.0003) return target;
-        return next;
-      });
-      const vid = videoRef.current;
-      if (
-        vid &&
-        Number.isFinite(vid.duration) &&
-        vid.duration > 1 &&
-        !seeking
-      ) {
-        const t = Math.min(vid.duration - 0.08, Math.max(0, target * vid.duration));
-        if (Math.abs(vid.currentTime - t) > 0.1) {
-          seeking = true;
-          try {
-            vid.currentTime = t;
-          } catch {
-            seeking = false;
-          }
-        }
+    const observer = new IntersectionObserver(([entry]) => {
+      nearby = !!entry?.isIntersecting;
+      if (nearby && video) {
+        if (video.preload !== "auto") { video.preload = "auto"; video.load(); }
+        schedule();
       }
-      raf = requestAnimationFrame(tick);
-    };
-
-    const onScroll = () => measure();
-    measure();
-    raf = requestAnimationFrame(tick);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    if (video) {
-      video.pause();
-      video.muted = true;
-    }
-
+    }, { rootMargin: "600px 0px" });
+    observer.observe(section);
+    // Finish the latest requested seek instead of queuing every scroll position.
+    video?.addEventListener("seeked", seek);
+    video?.addEventListener("loadeddata", schedule);
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    schedule();
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      video?.removeEventListener("seeked", onSeeked);
-      video?.removeEventListener("loadedmetadata", onReady);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+      video?.removeEventListener("seeked", seek);
+      video?.removeEventListener("loadeddata", schedule);
     };
   }, [reduced]);
 
@@ -120,11 +92,11 @@ export function BuildTimeline() {
               className="absolute inset-0 size-full object-cover"
               muted
               playsInline
-              preload="auto"
+              preload="none"
               poster="/images/hero-excavator.jpg"
               aria-hidden
             >
-              <source src="/videos/build-timeline.mp4?v=2" type="video/mp4" />
+              <source src="/videos/build-timeline-scrub.mp4" type="video/mp4" />
             </video>
           )}
           <div
@@ -137,12 +109,12 @@ export function BuildTimeline() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-5 py-10 md:px-8 md:py-14">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-5 pt-28 pb-10 md:px-8 md:pt-28 md:pb-14">
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="eyebrow">The build</p>
               <p className="mt-3 max-w-sm text-sm text-muted">
-                Scroll to scrub the film. One take. Concept to realization.
+                Scroll through the build. Breaking ground to lights on and keys delivered.
               </p>
             </div>
             <p className="font-display text-5xl tracking-[0.04em] text-fg/90 tabular-nums md:text-7xl">
@@ -187,8 +159,9 @@ export function BuildTimeline() {
           <div className="mx-auto max-w-7xl">
             <div className="relative h-[2px] bg-elevated">
               <div
-                className="absolute inset-y-0 left-0 bg-sage"
-                style={{ width: `${Math.min(100, progress * 100)}%` }}
+                ref={progressRef}
+                className="absolute inset-0 origin-left bg-sage"
+                style={{ transform: "scaleX(0)" }}
               />
               {phases.map((_, i) => (
                 <span

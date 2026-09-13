@@ -7,8 +7,10 @@ export const site = {
   peak: "Pagosa Peak",
   peakElevation: "12,658 ft",
   coordinates: "37.44395°N, 107.06659°W",
-  email: "build@matterhorn.construction",
-  phoneLabel: "Pagosa Springs",
+  email: "matterhornconstructionllc@gmail.com",
+  phoneLabel: "970-903-0122",
+  phoneHref: "tel:+19709030122",
+  owner: "Jody Ellis",
   instagram: "https://instagram.com",
 };
 
@@ -23,7 +25,7 @@ export const stats = [
   { value: "12,658", unit: "ft", label: "Pagosa Peak" },
   { value: "1,002", unit: "ft", label: "World’s deepest hot spring" },
   { value: "4th", unit: "generation", label: "Master builder" },
-  { value: "100+", unit: "years", label: "Of craft in the family" },
+  { value: "40+", unit: "years", label: "Jody Ellis’s personal experience" },
 ];
 
 export const phases = [

@@ -50,21 +50,21 @@ function AboutPage() {
                 Construction, LLC
               </p>
               <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
-                Fourth generation · Pagosa Springs
+                Jody Ellis · Owner & builder
               </p>
             </div>
           </div>
           <div className="md:col-span-8">
             <p className="text-xl leading-relaxed text-fg md:text-2xl">
               Pagosa Springs. The world’s deepest hot spring. Pagosa Peak at
-              12,658 feet. This is where a fourth-generation master builder puts
-              a house on a mountain lot.
+              12,658 feet. Owner Jody Ellis brings more than 40 years of personal
+              construction experience to every mountain lot.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
-              Matterhorn Construction, LLC is a hundred years of craft in the
-              blood — timber, stone, steel, and glass, from the first walk of the
-              lot to the day you take the keys. We know the inspector by name
-              because we live here.
+              Jody leads Matterhorn Construction, LLC with hands-on experience
+              in timber, stone, steel, and glass — from the first walk of the
+              lot to the day you take the keys. A fourth-generation builder,
+              he carries that family craft into every project.
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
               The mark is the mountain and the tools that work it. The Matterhorn

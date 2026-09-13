@@ -15,4 +15,5 @@ AGENTS.md
 .env
 .env.local
 .nitro
+.netlify
 .wrangler

@@ -30,6 +30,10 @@ export function SiteFooter() {
           <p className="mt-4 text-sm leading-relaxed text-muted">
             {site.legal}
             <br />
+            {site.owner} · Owner
+            <br />
+            <a href={site.phoneHref} className="text-fg hover:text-sage">{site.phoneLabel}</a>
+            <br />
             {site.peak} · {site.peakElevation}
             <br />
             {site.coordinates}

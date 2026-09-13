@@ -34,7 +34,7 @@ export function FilmTile({
       ([entry]) => {
         if (entry?.isIntersecting) {
           video.muted = true;
-          void video.play();
+          void video.play().catch(() => { /* Keep the still poster when autoplay is blocked. */ });
         } else video.pause();
       },
       { threshold: 0.4 },
@@ -59,7 +59,7 @@ export function FilmTile({
       <img
         src={shot.src}
         alt=""
-        className="ken-burns absolute inset-0 size-full object-cover"
+        className="absolute inset-0 size-full object-cover"
       />
       {reduced || !shot.video ? null : (
         <video

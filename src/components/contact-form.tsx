@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { submitInquiry } from "@/lib/contact-delivery.mjs";
 import { projectTypes, site, startTimelines } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -22,69 +23,25 @@ export function ContactForm() {
       return;
     }
 
+    if (submitting) return;
     setSubmitting(true);
-    const payload = { ...data, at: new Date().toISOString() };
-    const prev = JSON.parse(
-      localStorage.getItem("matterhorn-inquiries") || "[]",
-    ) as unknown[];
-    localStorage.setItem(
-      "matterhorn-inquiries",
-      JSON.stringify([payload, ...prev].slice(0, 20)),
-    );
-
-    const body = {
-      name: data.name,
-      email: data.email,
-      phone: data.phone || "",
-      type: data.type || "",
-      timeline: data.timeline || "",
-      message: data.message,
-      _subject: `Matterhorn brief — ${data.name}`,
-      _template: "table",
-      _captcha: "false",
-    };
-
-    let sent = false;
+    setDone(false);
     try {
-      const res = await fetch(`https://formsubmit.co/ajax/${site.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      sent = res.ok;
-    } catch {
-      sent = false;
-    }
-
-    setSubmitting(false);
-    if (sent) {
+      await submitInquiry(data);
       setDone(true);
       form.reset();
-      toast.success("Received. We’ll be in touch from Pagosa.");
-      return;
+      toast.success("Thank you. Your brief has been submitted to Matterhorn.");
+    } catch {
+      toast.error("Your brief could not be sent. Please try again, or call 970-903-0122. Your message is still here.");
+    } finally {
+      setSubmitting(false);
     }
-
-    const lines = [
-      `Name: ${data.name}`,
-      `Email: ${data.email}`,
-      `Phone: ${data.phone || "—"}`,
-      `Type: ${data.type || "—"}`,
-      `Timeline: ${data.timeline || "—"}`,
-      "",
-      data.message,
-    ];
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(
-      `Matterhorn brief — ${data.name}`,
-    )}&body=${encodeURIComponent(lines.join("\n"))}`;
-    setDone(true);
-    toast.message("Opening email so the brief still goes out.");
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4">
+    <form name="project-inquiry" method="POST" action="/__forms.html" onSubmit={onSubmit} className="grid gap-4">
+      <input type="hidden" name="form-name" value="project-inquiry" />
+      <label hidden>Leave this blank<input name="bot-field" tabIndex={-1} autoComplete="off" /></label>
       <div className="grid gap-4 md:grid-cols-2">
         <label className="grid gap-2 text-[0.7rem] font-medium tracking-[0.16em] text-muted uppercase">
           Name
@@ -150,8 +107,7 @@ export function ContactForm() {
         {submitting ? "Sending…" : done ? "Sent — start another" : "Send the brief"}
       </button>
       <p className="text-[0.7rem] leading-relaxed text-faint">
-        Briefs go to {site.email}. First send asks that inbox to confirm — one
-        click, then every brief lands.
+        Your brief goes to Jody Ellis. You can also <a className="underline" href={`mailto:${site.email}`}>email Jody</a> or <a className="underline" href={site.phoneHref}>call {site.phoneLabel}</a>.
       </p>
     </form>
   );

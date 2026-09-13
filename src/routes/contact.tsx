@@ -28,7 +28,8 @@ function ContactPage() {
             A new home, a remodel, a piece of mountain that needs a plan.
             Leave a number and when you want to break ground. We’ll call.
           </p>
-          <p className="mt-3 text-sm text-fg">{site.legal}</p>
+          <p className="mt-3 text-sm text-fg">{site.owner} · Owner, {site.legal}</p>
+          <a href={site.phoneHref} className="mt-2 text-lg text-fg hover:text-sage">{site.phoneLabel}</a>
           <a
             href={`mailto:${site.email}`}
             className="mt-1 text-sm text-muted transition-colors hover:text-sage"
