@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export function BuildTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
   const [reduced, setReduced] = useState(false);
 
@@ -24,6 +24,7 @@ export function BuildTimeline() {
 
   useEffect(() => {
     const section = sectionRef.current;
+    const video = videoRef.current;
     if (!section) return;
 
     let raf = 0;
@@ -38,10 +39,17 @@ export function BuildTimeline() {
 
     const tick = () => {
       setProgress((prev) => {
-        const next = prev + (target - prev) * 0.18;
+        const next = prev + (target - prev) * 0.22;
         if (Math.abs(next - prev) < 0.0004) return target;
         return next;
       });
+      const vid = videoRef.current;
+      if (vid && vid.duration && !Number.isNaN(vid.duration)) {
+        const t = target * vid.duration * 0.985;
+        if (Math.abs(vid.currentTime - t) > 0.04) {
+          vid.currentTime = t;
+        }
+      }
       raf = requestAnimationFrame(tick);
     };
 
@@ -51,6 +59,11 @@ export function BuildTimeline() {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
 
+    if (video) {
+      video.pause();
+      video.muted = true;
+    }
+
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
@@ -58,20 +71,12 @@ export function BuildTimeline() {
     };
   }, [reduced]);
 
-  useEffect(() => {
-    videoRefs.current.forEach((video, i) => {
-      if (!video) return;
-      if (!reduced && i === phaseIndex) void video.play();
-      else video.pause();
-    });
-  }, [phaseIndex, reduced]);
-
   return (
     <section
       ref={sectionRef}
       id="process"
       className="relative bg-bg"
-      style={{ height: reduced ? "auto" : "400vh" }}
+      style={{ height: reduced ? "auto" : `${phases.length * 100}vh` }}
     >
       <div
         className={cn(
@@ -80,82 +85,77 @@ export function BuildTimeline() {
         )}
       >
         <div className="absolute inset-0">
-          {phases.map((p, i) => {
-            const opacity = reduced
-              ? i === phaseIndex
-                ? 1
-                : 0
-              : Math.max(0, 1 - Math.abs(progress * phases.length - i - 0.5) * 1.15);
-            return (
-              <div
-                key={p.id}
-                className="absolute inset-0"
-                style={{ opacity, zIndex: i === phaseIndex ? 2 : 1 }}
-              >
-                <img
-                  src={p.image}
-                  alt=""
-                  className="absolute inset-0 size-full object-cover"
-                />
-                {reduced ? null : (
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[i] = el;
-                    }}
-                    className="absolute inset-0 size-full object-cover"
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    poster={p.image}
-                    aria-hidden
-                  >
-                    <source src={p.video} type="video/mp4" />
-                  </video>
-                )}
-              </div>
-            );
-          })}
+          {phases.map((p, i) => (
+            <img
+              key={p.id}
+              src={p.image}
+              alt=""
+              className="absolute inset-0 size-full object-cover transition-opacity duration-500"
+              style={{
+                opacity: reduced
+                  ? i === phaseIndex
+                    ? 1
+                    : 0
+                  : Math.max(
+                      0,
+                      1 - Math.abs(progress * phases.length - i - 0.5) * 1.35,
+                    ),
+              }}
+            />
+          ))}
+          {reduced ? null : (
+            <video
+              ref={videoRef}
+              className="absolute inset-0 size-full object-cover"
+              muted
+              playsInline
+              preload="auto"
+              poster={phases[0].image}
+              aria-hidden
+            >
+              <source src="/videos/build-timeline.mp4" type="video/mp4" />
+            </video>
+          )}
           <div
-            className="absolute inset-0 z-10 bg-linear-to-t from-bg via-bg/25 to-bg/40"
+            className="absolute inset-0 bg-linear-to-t from-bg via-bg/30 to-bg/35"
             aria-hidden
           />
           <div
-            className="absolute inset-0 z-10 bg-linear-to-r from-bg/70 via-transparent to-bg/40"
+            className="absolute inset-0 bg-linear-to-r from-bg/75 via-transparent to-bg/35"
             aria-hidden
           />
         </div>
 
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-5 py-10 md:px-8 md:py-14">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-5 py-10 md:px-8 md:py-14">
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="eyebrow">The build</p>
               <p className="mt-3 max-w-sm text-sm text-muted">
-                Scroll to walk a house from dirt to dusk. Four phases. One site.
+                Scroll to scrub the film. Concept to realization. One site.
               </p>
             </div>
             <p className="font-display text-5xl tracking-[0.04em] text-fg/90 tabular-nums md:text-7xl">
               {phase.num}
-              <span className="text-faint"> / 04</span>
+              <span className="text-faint"> / {String(phases.length).padStart(2, "0")}</span>
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-12 md:items-end">
             <div className="md:col-span-7">
               <p className="eyebrow">{phase.kicker}</p>
-              <h2 className="display-hero mt-3 text-[clamp(3.5rem,10vw,7rem)] text-fg">
+              <h2 className="display-hero mt-3 text-[clamp(3.2rem,9vw,6.4rem)] text-fg">
                 {phase.title}
               </h2>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-muted md:text-lg">
                 {phase.copy}
               </p>
             </div>
-            <ol className="hidden flex-col gap-2 md:col-span-5 md:flex">
+            <ol className="hidden flex-col gap-1 md:col-span-5 md:flex">
               {phases.map((p, i) => (
                 <li
                   key={p.id}
                   className={cn(
-                    "flex items-baseline justify-between border-t border-line py-3 text-sm tracking-[0.12em] uppercase transition-colors",
+                    "flex items-baseline justify-between border-t border-line py-2.5 text-sm tracking-[0.12em] uppercase transition-colors",
                     i === phaseIndex ? "text-fg" : "text-faint",
                   )}
                 >
@@ -169,7 +169,7 @@ export function BuildTimeline() {
           </div>
         </div>
 
-        <div className="relative z-20 px-5 pb-6 md:px-8">
+        <div className="relative z-10 px-5 pb-6 md:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="relative h-[2px] bg-elevated">
               <div

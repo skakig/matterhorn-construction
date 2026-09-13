@@ -12,10 +12,11 @@ function ProcessPage() {
         <div className="mx-auto max-w-7xl">
           <p className="eyebrow">Process</p>
           <h1 className="display-hero mt-4 max-w-[16ch] text-[clamp(3.4rem,10vw,7.5rem)] text-fg">
-            From dirt to dusk.
+            From concept to realization.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Four phases. One site. Scroll the film, or read the work in order.
+            Scroll to scrub the film. Five beats. One site — including the
+            change request that added a dormer.
           </p>
         </div>
       </section>

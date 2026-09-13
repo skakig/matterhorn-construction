@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section className="relative isolate h-dvh min-h-[640px] overflow-hidden bg-bg">
       <CinematicVideo
-        src="/videos/lodge-peak-approach.mp4"
+        src="/videos/hero-film.mp4"
         poster="/images/hero-lodge.jpg"
       />
       <div
@@ -38,7 +38,7 @@ export function Hero() {
           </p>
           <div className="cta-glass flex w-full max-w-md flex-col gap-3 p-5 sm:p-6">
             <p className="font-display text-3xl tracking-[0.04em] text-fg md:text-4xl">
-              From groundwork to architecture.
+              From conceptuals to realization.
             </p>
             <div className="flex flex-col gap-2 sm:flex-row">
               <button
