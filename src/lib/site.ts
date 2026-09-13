@@ -32,7 +32,7 @@ export const phases = [
     num: "01",
     title: "Concept",
     kicker: "The idea",
-    copy: "It starts on paper. Massing, light, the view from the sink. Before the machine hits the slope, the house is a set of decisions.",
+    copy: "The lot is the brief. Pagosa Peak on the horizon, a dirt pad, the first machine. Before timber goes up, this is the idea standing in the weather.",
     image: "/images/phase-concept.jpg",
     video: "/videos/phase-concept.mp4",
   },

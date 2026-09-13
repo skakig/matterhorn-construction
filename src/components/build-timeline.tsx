@@ -29,25 +29,48 @@ export function BuildTimeline() {
 
     let raf = 0;
     let target = 0;
+    let seeking = false;
 
     const measure = () => {
       const rect = section.getBoundingClientRect();
-      const total = section.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 1));
-      target = total > 0 ? scrolled / total : 0;
+      const total = Math.max(section.offsetHeight - window.innerHeight, 1);
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      target = scrolled / total;
     };
+
+    const onSeeked = () => {
+      seeking = false;
+    };
+    const onReady = () => {
+      if (!video) return;
+      video.pause();
+      video.muted = true;
+    };
+
+    video?.addEventListener("seeked", onSeeked);
+    video?.addEventListener("loadedmetadata", onReady);
 
     const tick = () => {
       setProgress((prev) => {
-        const next = prev + (target - prev) * 0.22;
-        if (Math.abs(next - prev) < 0.0004) return target;
+        const next = prev + (target - prev) * 0.28;
+        if (Math.abs(next - prev) < 0.0003) return target;
         return next;
       });
       const vid = videoRef.current;
-      if (vid && vid.duration && !Number.isNaN(vid.duration)) {
-        const t = target * vid.duration * 0.985;
-        if (Math.abs(vid.currentTime - t) > 0.04) {
-          vid.currentTime = t;
+      if (
+        vid &&
+        Number.isFinite(vid.duration) &&
+        vid.duration > 1 &&
+        !seeking
+      ) {
+        const t = Math.min(vid.duration - 0.08, Math.max(0, target * vid.duration));
+        if (Math.abs(vid.currentTime - t) > 0.1) {
+          seeking = true;
+          try {
+            vid.currentTime = t;
+          } catch {
+            seeking = false;
+          }
         }
       }
       raf = requestAnimationFrame(tick);
@@ -58,7 +81,6 @@ export function BuildTimeline() {
     raf = requestAnimationFrame(tick);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
-
     if (video) {
       video.pause();
       video.muted = true;
@@ -68,6 +90,8 @@ export function BuildTimeline() {
       cancelAnimationFrame(raf);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      video?.removeEventListener("seeked", onSeeked);
+      video?.removeEventListener("loadedmetadata", onReady);
     };
   }, [reduced]);
 
@@ -84,25 +108,12 @@ export function BuildTimeline() {
           reduced ? "relative min-h-[85vh]" : "sticky top-0 h-dvh",
         )}
       >
-        <div className="absolute inset-0">
-          {phases.map((p, i) => (
-            <img
-              key={p.id}
-              src={p.image}
-              alt=""
-              className="absolute inset-0 size-full object-cover transition-opacity duration-500"
-              style={{
-                opacity: reduced
-                  ? i === phaseIndex
-                    ? 1
-                    : 0
-                  : Math.max(
-                      0,
-                      1 - Math.abs(progress * phases.length - i - 0.5) * 1.35,
-                    ),
-              }}
-            />
-          ))}
+        <div className="absolute inset-0 bg-bg">
+          <img
+            src={phase.image}
+            alt=""
+            className="absolute inset-0 size-full object-cover"
+          />
           {reduced ? null : (
             <video
               ref={videoRef}
@@ -110,18 +121,18 @@ export function BuildTimeline() {
               muted
               playsInline
               preload="auto"
-              poster={phases[0].image}
+              poster="/images/hero-excavator.jpg"
               aria-hidden
             >
-              <source src="/videos/build-timeline.mp4" type="video/mp4" />
+              <source src="/videos/build-timeline.mp4?v=2" type="video/mp4" />
             </video>
           )}
           <div
-            className="absolute inset-0 bg-linear-to-t from-bg via-bg/30 to-bg/35"
+            className="absolute inset-0 bg-linear-to-t from-bg via-bg/25 to-bg/30"
             aria-hidden
           />
           <div
-            className="absolute inset-0 bg-linear-to-r from-bg/75 via-transparent to-bg/35"
+            className="absolute inset-0 bg-linear-to-r from-bg/70 via-transparent to-bg/30"
             aria-hidden
           />
         </div>
@@ -131,12 +142,15 @@ export function BuildTimeline() {
             <div>
               <p className="eyebrow">The build</p>
               <p className="mt-3 max-w-sm text-sm text-muted">
-                Scroll to scrub the film. Concept to realization. One site.
+                Scroll to scrub the film. One take. Concept to realization.
               </p>
             </div>
             <p className="font-display text-5xl tracking-[0.04em] text-fg/90 tabular-nums md:text-7xl">
               {phase.num}
-              <span className="text-faint"> / {String(phases.length).padStart(2, "0")}</span>
+              <span className="text-faint">
+                {" "}
+                / {String(phases.length).padStart(2, "0")}
+              </span>
             </p>
           </div>
 
