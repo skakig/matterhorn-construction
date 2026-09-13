@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Matterhorn Construction">
+  <circle cx="100" cy="100" r="100" fill="#0A0B0A"/>
+  <circle cx="100" cy="100" r="93" fill="none" stroke="#F3F1EA" stroke-width="2.4"/>
+  <g fill="none" stroke="#F3F1EA" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Matterhorn outline with right ridge -->
+    <path stroke-width="3.6" d="M40 160 100 68l18 26 16-18 26 84H40Z"/>
+    <!-- Sledgehammer NW: handle + rectangular head -->
+    <path stroke-width="3.4" d="M128 122 78 56"/>
+    <path stroke-width="5" d="M66 48h30"/>
+    <!-- Hatchet NE: handle + blade -->
+    <path stroke-width="3.4" d="M72 122 122 56"/>
+    <path stroke-width="3.4" d="M118 44l22 8-8 16"/>
+  </g>
+</svg>

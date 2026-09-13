@@ -1,0 +1,248 @@
+export const site = {
+  name: "Matterhorn Construction",
+  legal: "Matterhorn Construction, LLC",
+  tagline: "Built for the high country.",
+  location: "Pagosa Springs, Colorado",
+  region: "San Juan Mountains",
+  peak: "Pagosa Peak",
+  peakElevation: "12,658 ft",
+  coordinates: "37.44395°N, 107.06659°W",
+  email: "build@matterhorn.construction",
+  phoneLabel: "Pagosa Springs",
+  instagram: "https://instagram.com",
+};
+
+export const nav = [
+  { href: "/work", label: "Work" },
+  { href: "/process", label: "Process" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+] as const;
+
+export const stats = [
+  { value: "12,658", unit: "ft", label: "Pagosa Peak" },
+  { value: "7,126", unit: "ft", label: "Town elevation" },
+  { value: "37.44", unit: "°N", label: "The mountain we build under" },
+  { value: "4", unit: "seasons", label: "Year-round timber" },
+];
+
+export const phases = [
+  {
+    id: "foundation",
+    num: "01",
+    title: "Foundation",
+    kicker: "Groundwork",
+    copy: "Cut, fill, stem walls, and footings engineered for freeze-thaw and mountain drainage. The house starts in the dirt.",
+    image: "/images/phase-foundation.jpg",
+  },
+  {
+    id: "frame",
+    num: "02",
+    title: "Frame",
+    kicker: "Structure",
+    copy: "Heavy logs, steel, and shear. Timbers go up, the roof plane locks, and a mountain ranch finds its bones.",
+    image: "/images/phase-frame.jpg",
+  },
+  {
+    id: "envelope",
+    num: "03",
+    title: "Envelope",
+    kicker: "Weather",
+    copy: "Standing-seam metal, stone bases, deep gables. Pagosa weather is the client we never argue with.",
+    image: "/images/phase-envelope.jpg",
+  },
+  {
+    id: "finish",
+    num: "04",
+    title: "Finish",
+    kicker: "Landscape",
+    copy: "Landscaping, the built stream, antler work, decks, and the last light on Pagosa Peak. Six Pines Ranch settles into the slope.",
+    image: "/images/phase-finish.jpg",
+  },
+] as const;
+
+export const services = [
+  {
+    num: "01",
+    title: "Custom homes",
+    copy: "New residences designed for the lot — timber, stone, steel, and glass, from first stake to final walkthrough.",
+  },
+  {
+    num: "02",
+    title: "Design-build",
+    copy: "One team from schematic through punch list. Fewer handoffs, tighter budgets, a house that still looks like the drawing.",
+  },
+  {
+    num: "03",
+    title: "Remodel & addition",
+    copy: "Opening a 1980s ranch to the peaks, adding a primary wing, rebuilding a deck that has seen too many winters.",
+  },
+  {
+    num: "04",
+    title: "Site & structure",
+    copy: "Steep lots, long drives, retaining, and snow-country detailing. The work you do before the pretty pictures.",
+  },
+] as const;
+
+export type FilmShot = {
+  id: string;
+  src: string;
+  video: string;
+  title: string;
+  caption: string;
+  slug: string;
+};
+
+export const films: FilmShot[] = [
+  {
+    id: "approach",
+    src: "/images/hero-lodge.jpg",
+    video: "/videos/lodge-peak-approach.mp4",
+    title: "The approach",
+    caption: "Six Pines under the peak",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "arrival",
+    src: "/images/lodge-drive.jpg",
+    video: "/videos/lodge-drive.mp4",
+    title: "Arrival",
+    caption: "Porte-cochere",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "lawn",
+    src: "/images/lodge-lawn.jpg",
+    video: "/videos/lodge-lawn.mp4",
+    title: "The lawn",
+    caption: "Back of the garage",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "garage",
+    src: "/images/lodge-garage.jpg",
+    video: "/videos/lodge-garage.mp4",
+    title: "The garage",
+    caption: "Heavy timber, steel doors",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "rear",
+    src: "/images/lodge-rear.jpg",
+    video: "/videos/lodge-rear.mp4",
+    title: "The finish",
+    caption: "Landscaped ranch",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "stream",
+    src: "/images/lodge-stream.jpg",
+    video: "/videos/lodge-stream.mp4",
+    title: "The stream",
+    caption: "Built, not found",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "firepit",
+    src: "/images/lodge-firepit.jpg",
+    video: "/videos/lodge-firepit.mp4",
+    title: "Fire pit",
+    caption: "Swing and stone",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "patio",
+    src: "/images/lodge-patio.jpg",
+    video: "/videos/lodge-patio.mp4",
+    title: "Under the decks",
+    caption: "The hangout",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "pool",
+    src: "/images/lodge-pool.jpg",
+    video: "/videos/lodge-pool.mp4",
+    title: "The water",
+    caption: "Courtyard pool",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "courtyard",
+    src: "/images/lodge-courtyard.jpg",
+    video: "/videos/lodge-courtyard.mp4",
+    title: "Courtyard",
+    caption: "Wings and stone",
+    slug: "six-pines-ranch",
+  },
+  {
+    id: "peak",
+    src: "/images/pagosa-peak.jpg",
+    video: "/videos/pagosa-peak.mp4",
+    title: "Pagosa Peak",
+    caption: "12,658 ft",
+    slug: "six-pines-ranch",
+  },
+];
+
+export const lodgeShots = films.filter((f) =>
+  ["arrival", "lawn", "rear", "stream"].includes(f.id),
+);
+
+export const approachFilm = films[0]!;
+
+export type Project = {
+  slug: string;
+  title: string;
+  location: string;
+  year: string;
+  type: string;
+  size: string;
+  image: string;
+  video?: string;
+  gallery: FilmShot[];
+  excerpt: string;
+  body: string[];
+};
+
+export const projects: Project[] = [
+  {
+    slug: "six-pines-ranch",
+    title: "Six Pines Ranch",
+    location: "Pagosa Springs",
+    year: "2025",
+    type: "Timber ranch",
+    size: "Custom",
+    image: "/images/lodge-rear.jpg",
+    video: "/videos/lodge-rear.mp4",
+    gallery: films.filter((f) => f.id !== "approach"),
+    excerpt:
+      "Six Pines Ranch — a heavy-timber house under Pagosa Peak, finished with a built stream, antler work, stone, and a lawn the dog owns.",
+    body: [
+      "The ranch sits in Pagosa Springs with Pagosa Peak on the horizon at 37.44395°N, 107.06659°W. Massive log columns, deep metal gables, stone bases, and a porte-cochere sized for a mountain winter.",
+      "The finish is the landscape: a rock-lined stream we built through the lawn, antler bridge and tables, boulder walls, decks, fire pit, and water at the tree line. Built to be lived in — dogs on the grass, chairs pointed at the peak.",
+    ],
+  },
+];
+
+export const values = [
+  {
+    title: "The lot is the brief",
+    copy: "Wind, solar, snow, access, and the view you actually want from the sink. We walk it before we draw it.",
+  },
+  {
+    title: "Weather is the client",
+    copy: "Pagosa does not care about a mood board. Roofs, flashing, and assemblies come first. Beauty follows.",
+  },
+  {
+    title: "One crew, one conversation",
+    copy: "Design-build means the people who bid the steel are in the room when we talk about the glass. Fewer surprises.",
+  },
+];
+
+export const projectTypes = [
+  "Custom home",
+  "Design-build",
+  "Remodel / addition",
+  "Site work",
+  "Other",
+] as const;
