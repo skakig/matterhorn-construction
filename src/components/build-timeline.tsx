@@ -112,9 +112,9 @@ export function BuildTimeline() {
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between px-5 pt-28 pb-10 md:px-8 md:pt-28 md:pb-14">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <p className="eyebrow">The build</p>
+              <p className="eyebrow">A conceptual build</p>
               <p className="mt-3 max-w-sm text-sm text-muted">
-                Scroll through the build. Breaking ground to lights on and keys delivered.
+                Scroll from breaking ground to an imagined finished home. Conceptual renderings illustrate the process.
               </p>
             </div>
             <p className="font-display text-5xl tracking-[0.04em] text-fg/90 tabular-nums md:text-7xl">
@@ -148,7 +148,7 @@ export function BuildTimeline() {
                   <span>
                     {p.num} {p.title}
                   </span>
-                  {i === phaseIndex ? <span className="text-sage">Live</span> : null}
+                  {i === phaseIndex ? <span className="text-sage">Viewing</span> : null}
                 </li>
               ))}
             </ol>
