@@ -167,8 +167,8 @@ export const films: FilmShot[] = [
   },
   {
     id: "patio",
-    src: "/images/lodge-patio.jpg",
-    video: "/videos/lodge-patio.mp4",
+    src: "/images/lodge-courtyard.jpg",
+    video: "/videos/lodge-courtyard.mp4",
     title: "Under the decks",
     caption: "The hangout",
     slug: "six-pines-ranch",
