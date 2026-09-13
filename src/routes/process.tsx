@@ -1,9 +1,54 @@
+import { useEffect, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { BuildTimeline } from "@/components/build-timeline";
 import { SiteShell } from "@/components/site-shell";
 import { phases } from "@/lib/site";
 
 export const Route = createFileRoute("/process")({ component: ProcessPage });
+
+function PhaseFilm({ src, poster }: { src: string; poster: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          video.muted = true;
+          void video.play();
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(video);
+    return () => io.disconnect();
+  }, [src]);
+
+  return (
+    <div className="relative isolate aspect-video overflow-hidden bg-surface">
+      <img
+        src={poster}
+        alt=""
+        className="ken-burns absolute inset-0 size-full object-cover"
+      />
+      <video
+        ref={ref}
+        className="absolute inset-0 size-full object-cover motion-reduce:hidden"
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={poster}
+        aria-hidden
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+    </div>
+  );
+}
 
 function ProcessPage() {
   return (
@@ -25,7 +70,7 @@ function ProcessPage() {
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2">
           {phases.map((p) => (
             <article key={p.id}>
-              <img src={p.image} alt={p.title} className="aspect-video w-full object-cover" />
+              <PhaseFilm src={p.video} poster={p.image} />
               <p className="eyebrow mt-5">
                 {p.num} · {p.kicker}
               </p>

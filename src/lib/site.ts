@@ -68,7 +68,7 @@ export const phases = [
     num: "05",
     title: "Realization",
     kicker: "The ranch",
-    copy: "Lights on. Landscaping, the built stream, antler work, decks. Six Pines Ranch as it stands — the house we actually built.",
+    copy: "A dream coming true. Lights on. Landscaping, the built stream, antler work, decks. Six Pines Ranch as it stands — the house we actually built.",
     image: "/images/phase-finish.jpg",
     video: "/videos/lodge-entry.mp4",
   },

@@ -137,9 +137,8 @@ function AboutPage() {
               From pre-planning to the keys.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-              Matterhorn Construction, LLC is here to make the house you see a
-              house you can walk into — first walk of the lot, last turn of the
-              key.
+              A house you can walk into — and fall in love with, knowing it was
+              crafted with care and the highest principles.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
