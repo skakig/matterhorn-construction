@@ -144,7 +144,7 @@ export const films: FilmShot[] = [
   {
     id: "rear",
     src: "/images/lodge-stream.jpg",
-    video: "/videos/lodge-finish.mp4",
+    video: "/videos/lodge-stream.mp4",
     title: "The finish",
     caption: "Landscaped ranch",
     slug: "six-pines-ranch",
