@@ -96,7 +96,7 @@ export function BuildTimeline() {
               poster="/images/hero-excavator.jpg"
               aria-hidden
             >
-              <source src="/videos/build-timeline-scrub.mp4" type="video/mp4" />
+              <source src="/videos/build-timeline-hq.mp4" type="video/mp4" />
             </video>
           )}
           <div
