@@ -60,8 +60,9 @@ function ProcessPage() {
             From concept to realization.
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted">
-            Scroll to scrub the film. Five beats. One site — including the
-            change request that added a dormer.
+            Explore five stages of a conceptual mountain home, including a
+            dormer design variation. These renderings illustrate the building
+            process rather than document a completed project.
           </p>
         </div>
       </section>
