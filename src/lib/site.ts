@@ -70,7 +70,7 @@ export const phases = [
     num: "05",
     title: "Realization",
     kicker: "The finished concept",
-    copy: "Lights on, landscaping in place, and a mountain home imagined in full. This architectural visualization illustrates a possible finished build; it does not depict Six Pines Ranch or a completed Matterhorn project.",
+    copy: "Lights on, landscaping in place, and a mountain home imagined in full. From concept to realization, Matterhorn Construction is with you every step of the way—right up to the moment we hand you the keys.",
     image: "/images/phase-finish.jpg",
     video: "/videos/lodge-entry.mp4",
   },
