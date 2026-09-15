@@ -46,6 +46,49 @@ export function LogoMark({ className }: { className?: string }) {
   );
 }
 
+/** CONSTRUCTION is letter-spaced to the exact width of MATTERHORN. */
+export function Wordmark({
+  className,
+  size = "nav",
+  llc = false,
+}: {
+  className?: string;
+  size?: "nav" | "plate";
+  llc?: boolean;
+}) {
+  const plate = size === "plate";
+  return (
+    <span className={cn("grid w-max leading-none", className)}>
+      <span
+        className={cn(
+          "-mr-[0.14em] font-display tracking-[0.14em] text-fg",
+          plate ? "text-4xl md:text-5xl" : "text-[1.45rem] md:text-[1.6rem]",
+        )}
+      >
+        MATTERHORN
+      </span>
+      <span
+        className={cn(
+          "flex w-0 min-w-full justify-between font-medium text-muted",
+          plate ? "mt-2.5 text-[0.72rem] md:text-[0.8rem]" : "text-[0.66rem]",
+        )}
+        aria-label="Construction"
+      >
+        {Array.from("CONSTRUCTION").map((letter, index) => (
+          <span key={index} aria-hidden="true">
+            {letter}
+          </span>
+        ))}
+      </span>
+      {llc ? (
+        <span className="mt-3 text-[0.65rem] font-medium tracking-[0.32em] text-faint">
+          LLC
+        </span>
+      ) : null}
+    </span>
+  );
+}
+
 export function Logo({
   className,
   markClassName,
@@ -66,21 +109,7 @@ export function Logo({
         alt=""
         className={cn("size-12 shrink-0 object-contain outline-none md:size-14", markClassName)}
       />
-      {wordmark ? (
-        <span className="grid w-max leading-none">
-          <span className="-mr-[0.14em] font-display text-[1.45rem] tracking-[0.14em] md:text-[1.6rem]">
-            MATTERHORN
-          </span>
-          <span
-            className="flex w-0 min-w-full justify-between text-[0.66rem] font-medium text-muted"
-            aria-label="Construction"
-          >
-            {Array.from("CONSTRUCTION").map((letter, index) => (
-              <span key={index} aria-hidden="true">{letter}</span>
-            ))}
-          </span>
-        </span>
-      ) : null}
+      {wordmark ? <Wordmark /> : null}
     </Link>
   );
 }

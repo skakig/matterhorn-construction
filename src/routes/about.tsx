@@ -2,6 +2,7 @@ import { seo } from "@/lib/seo";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CinematicVideo } from "@/components/cinematic-video";
 import { FilmTile } from "@/components/film-tile";
+import { Wordmark } from "@/components/logo";
 import { SiteShell } from "@/components/site-shell";
 import { films, site, stats, values } from "@/lib/site";
 
@@ -44,12 +45,7 @@ function AboutPage() {
                 alt="Matterhorn Construction"
                 className="size-28 object-contain outline-none md:size-36"
               />
-              <p className="mt-6 font-display text-4xl tracking-[0.14em] text-fg md:text-5xl">
-                MATTERHORN
-              </p>
-              <p className="mt-2 text-[0.7rem] font-medium tracking-[0.28em] text-muted uppercase">
-                Construction, LLC
-              </p>
+              <Wordmark size="plate" llc className="mt-6" />
               <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
                 Jody Ellis · Owner & builder
               </p>
@@ -123,12 +119,7 @@ function AboutPage() {
                 alt=""
                 className="size-28 object-contain outline-none md:size-40"
               />
-              <p className="mt-6 font-display text-4xl tracking-[0.14em] text-fg md:text-5xl">
-                MATTERHORN
-              </p>
-              <p className="mt-2 text-[0.7rem] font-medium tracking-[0.28em] text-muted uppercase">
-                Construction, LLC
-              </p>
+              <Wordmark size="plate" llc className="mt-6" />
               <p className="mt-6 border-t border-line pt-4 text-[0.7rem] tracking-[0.16em] text-faint uppercase">
                 {site.location}
               </p>
