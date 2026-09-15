@@ -52,7 +52,7 @@ export const phases = [
     num: "03",
     title: "Frame",
     kicker: "Structure",
-    copy: "Heavy logs, steel, and shear. Timbers go up, the roof plane locks, and a mountain ranch finds its bones.",
+    copy: "Heavy logs and steel. Shear walls lock the roof, and a mountain ranch finds its bones.",
     image: "/images/phase-frame.jpg",
     video: "/videos/phase-frame.mp4",
   },
@@ -80,7 +80,7 @@ export const services = [
   {
     num: "01",
     title: "Custom homes",
-    copy: "New residences designed for the lot — timber, stone, steel, and glass, from first stake to final walkthrough.",
+    copy: "New residences designed for the lot — timber and stone, with steel and glass, from first stake to final walkthrough.",
   },
   {
     num: "02",
@@ -94,8 +94,8 @@ export const services = [
   },
   {
     num: "04",
-    title: "Site & structure",
-    copy: "Steep lots, long drives, retaining, and snow-country detailing. The work you do before the pretty pictures.",
+    title: "Groundwork",
+    copy: "Steep lots and long drives. Retaining walls and snow-country flashing. The work you do before the pretty pictures.",
   },
 ] as const;
 
@@ -234,7 +234,7 @@ export const projects: Project[] = [
       "Six Pines Ranch — a heavy-timber house under Pagosa Peak, finished with a built stream, antler work, stone, and a lawn the dog owns.",
     body: [
       "The ranch sits in Pagosa Springs with Pagosa Peak on the horizon at 37.44395°N, 107.06659°W. Massive log columns, deep metal gables, stone bases, and a porte-cochere sized for a mountain winter.",
-      "The finish is the landscape: a rock-lined stream we built through the lawn, antler bridge and tables, boulder walls, decks, fire pit, and water at the tree line. Built to be lived in — dogs on the grass, chairs pointed at the peak.",
+      "The finish is the yard: a rock-lined stream we built through the lawn, antler bridge and tables, boulder walls, decks, fire pit, and water at the tree line. Built to be lived in — dogs on the grass, chairs pointed at the peak.",
     ],
   },
 ];

@@ -10,7 +10,7 @@ export function SiteFooter() {
           <Logo markClassName="size-12" />
           <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
             Custom homes and mountain construction in Pagosa Springs, Colorado.
-            Timber, stone, steel, and glass — built under Pagosa Peak.
+            Timber and stone, steel and glass — built under Pagosa Peak.
           </p>
         </div>
         <div className="md:col-span-3">

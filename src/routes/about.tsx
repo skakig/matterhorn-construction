@@ -63,7 +63,7 @@ function AboutPage() {
             </p>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted">
               Jody leads Matterhorn Construction, LLC with hands-on experience
-              in timber, stone, steel, and glass — from the first walk of the
+              in timber and stone, steel and glass — from the first walk of the
               lot to the day you take the keys. A fourth-generation builder,
               he carries that family craft into every project.
             </p>
@@ -141,7 +141,7 @@ function AboutPage() {
             </h2>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
               A house you can walk into — and fall in love with, knowing it was
-              crafted with care and the highest principles.
+              built with care and the highest principles.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
